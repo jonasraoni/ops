@@ -10,6 +10,12 @@
 				"nullable"
 			]
 		},
+		"country": {
+			"type": "string",
+			"validation": [
+				"country"
+			]
+		},
 		"enableAuthorScreening": {
 			"type": "boolean",
 			"default": 0,
