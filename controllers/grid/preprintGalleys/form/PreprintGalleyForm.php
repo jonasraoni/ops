@@ -40,6 +40,8 @@ class PreprintGalleyForm extends Form
     /** @var bool indicates whether the form is editable */
     public bool $_isEditable = true;
 
+    public $_articleGalley;
+
     /**
      * Constructor.
      *

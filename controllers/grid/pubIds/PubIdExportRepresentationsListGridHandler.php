@@ -17,7 +17,7 @@ namespace APP\controllers\grid\pubIds;
 
 use APP\core\Application;
 use APP\facades\Repo;
-use APP\plugins\PubIdPlugin;
+use APP\plugins\PubObjectsExportPlugin;
 use PKP\controllers\grid\feature\PagingFeature;
 use PKP\controllers\grid\feature\selectableItems\SelectableItemsFeature;
 use PKP\controllers\grid\GridColumn;
@@ -29,7 +29,7 @@ use PKP\security\Role;
 
 class PubIdExportRepresentationsListGridHandler extends GridHandler
 {
-    /** @var PubIdPlugin */
+    /** @var PubObjectsExportPlugin */
     public $_plugin;
 
     /**
@@ -77,14 +77,15 @@ class PubIdExportRepresentationsListGridHandler extends GridHandler
 
         $pluginCategory = $request->getUserVar('category');
         $pluginPathName = $request->getUserVar('plugin');
-        $this->_plugin = PluginRegistry::loadPlugin($pluginCategory, $pluginPathName);
-        assert(isset($this->_plugin));
+        /** @var PubObjectsExportPlugin $plugin */
+        $plugin = $this->_plugin = PluginRegistry::loadPlugin($pluginCategory, $pluginPathName);
+        assert(isset($plugin));
 
         // Fetch the authorized roles.
         $authorizedRoles = $this->getAuthorizedContextObject(Application::ASSOC_TYPE_USER_ROLES);
 
         // Grid columns.
-        $cellProvider = new PubIdExportRepresentationsListGridCellProvider($this->_plugin, $authorizedRoles);
+        $cellProvider = new PubIdExportRepresentationsListGridCellProvider($plugin, $authorizedRoles);
         $this->addColumn(
             new GridColumn(
                 'id',
@@ -122,7 +123,7 @@ class PubIdExportRepresentationsListGridHandler extends GridHandler
             new GridColumn(
                 'pubId',
                 null,
-                $this->_plugin->getPubIdDisplayType(),
+                $plugin->getPubIdDisplayType(),
                 null,
                 $cellProvider,
                 ['alignment' => GridColumn::COLUMN_ALIGNMENT_LEFT,

@@ -22,6 +22,8 @@ class SubmissionDeletionTool extends CommandLineTool
 {
     public $preprintIds;
 
+    public $parameters;
+
     /**
      * Constructor.
      *
