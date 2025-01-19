@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @defgroup api_v1_vocabs Controlled vocabulary API requests
  */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @defgroup api_v1_temporaryFiles Temporary file upload API requests
  */

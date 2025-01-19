@@ -19,7 +19,6 @@ use Exception;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-
 use PKP\config\Config;
 use PKP\install\DowngradeNotSupportedException;
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @defgroup pages_doiManagement DOI Management Pages
  */

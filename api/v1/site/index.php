@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @defgroup api_v1_site Site API requests
  */
